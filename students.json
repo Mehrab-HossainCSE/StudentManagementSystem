@@ -1,0 +1,59 @@
+[
+  {
+    "FirstName": "medrf",
+    "MiddleName": "dfd",
+    "LastName": "sfd",
+    "StudentID": "201-15-15",
+    "JoiningBatch": "201",
+    "Department": 1,
+    "Degree": 1,
+    "SemestersAttended": [
+      {
+        "SemesterCode": "234",
+        "Year": "234"
+      }
+    ],
+    "Courses": [
+      {
+        "CourseID": "34",
+        "CourseName": "dfdf",
+        "InstructorName": "dfdf",
+        "NumberOfCredits": 33
+      }
+    ]
+  },
+  {
+    "FirstName": "dfd",
+    "MiddleName": "fdf",
+    "LastName": "sdf",
+    "StudentID": "201-15-15",
+    "JoiningBatch": "34",
+    "Department": 1,
+    "Degree": 1,
+    "SemestersAttended": [],
+    "Courses": []
+  },
+  {
+    "FirstName": "\"dfh\"",
+    "MiddleName": "\"dfd\"",
+    "LastName": "\"dfod\"",
+    "StudentID": "\"201-15-13\"",
+    "JoiningBatch": "\"34\"",
+    "Department": 1,
+    "Degree": 1,
+    "SemestersAttended": [
+      {
+        "SemesterCode": "\"34\"",
+        "Year": "\"34\""
+      }
+    ],
+    "Courses": [
+      {
+        "CourseID": "\"34\"",
+        "CourseName": "\"dfdf\"",
+        "InstructorName": "\"dfd\"",
+        "NumberOfCredits": 33
+      }
+    ]
+  }
+]

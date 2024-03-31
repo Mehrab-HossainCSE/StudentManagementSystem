@@ -1,0 +1,17 @@
+D:\Assignment_Dot_Net\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.exe
+D:\Assignment_Dot_Net\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.deps.json
+D:\Assignment_Dot_Net\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.runtimeconfig.json
+D:\Assignment_Dot_Net\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.dll
+D:\Assignment_Dot_Net\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.pdb
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.GeneratedMSBuildEditorConfig.editorconfig
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.AssemblyInfoInputs.cache
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.AssemblyInfo.cs
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.csproj.CoreCompileInputs.cache
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.dll
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\refint\StudentManagementSystem.dll
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.pdb
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.genruntimeconfig.cache
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\ref\StudentManagementSystem.dll
+D:\Assignment_Dot_Net\StudentManagementSystem\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.csproj.AssemblyReference.cache
+D:\Assignment_Dot_Net\StudentManagementSystem\obj\Debug\net8.0\StudentM.D74F523C.Up2Date
