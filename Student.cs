@@ -22,9 +22,9 @@ public class Student{
         public Degree Degree { get; set; }
         public List<Semester> SemestersAttended { get; set; }
          public List<Course> Courses { get; set; }
-         public Student()
-        {
-            SemestersAttended = new List<Semester>();
-            Courses=new List<Course>();
-        }
+      //    public Student()
+      //   {
+      //       SemestersAttended = new List<Semester>();
+      //       Courses=new List<Course>();
+      //   }
 }

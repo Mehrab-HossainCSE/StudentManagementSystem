@@ -1,59 +1,53 @@
 [
   {
-    "FirstName": "medrf",
-    "MiddleName": "dfd",
-    "LastName": "sfd",
-    "StudentID": "201-15-15",
-    "JoiningBatch": "201",
+    "FirstName": "hed",
+    "MiddleName": "ere",
+    "LastName": "fe",
+    "StudentID": "201-1-1",
+    "JoiningBatch": "22",
     "Department": 1,
     "Degree": 1,
     "SemestersAttended": [
       {
-        "SemesterCode": "234",
-        "Year": "234"
+        "SemesterCode": "33",
+        "Year": "11"
       }
     ],
     "Courses": [
       {
-        "CourseID": "34",
-        "CourseName": "dfdf",
-        "InstructorName": "dfdf",
-        "NumberOfCredits": 33
+        "CourseID": "23",
+        "CourseName": "fdf",
+        "InstructorName": "fd",
+        "NumberOfCredits": 3
+      },
+      {
+        "CourseID": "23",
+        "CourseName": "fdf",
+        "InstructorName": "fd",
+        "NumberOfCredits": 3
       }
     ]
+  },
+  {
+    "FirstName": "sdf",
+    "MiddleName": "sdf",
+    "LastName": "fdf",
+    "StudentID": "2-2-2",
+    "JoiningBatch": "33",
+    "Department": 1,
+    "Degree": 1,
+    "SemestersAttended": null,
+    "Courses": null
   },
   {
     "FirstName": "dfd",
-    "MiddleName": "fdf",
-    "LastName": "sdf",
-    "StudentID": "201-15-15",
-    "JoiningBatch": "34",
+    "MiddleName": "sdf",
+    "LastName": "df",
+    "StudentID": "2-1-2",
+    "JoiningBatch": "44",
     "Department": 1,
     "Degree": 1,
-    "SemestersAttended": [],
-    "Courses": []
-  },
-  {
-    "FirstName": "\"dfh\"",
-    "MiddleName": "\"dfd\"",
-    "LastName": "\"dfod\"",
-    "StudentID": "\"201-15-13\"",
-    "JoiningBatch": "\"34\"",
-    "Department": 1,
-    "Degree": 1,
-    "SemestersAttended": [
-      {
-        "SemesterCode": "\"34\"",
-        "Year": "\"34\""
-      }
-    ],
-    "Courses": [
-      {
-        "CourseID": "\"34\"",
-        "CourseName": "\"dfdf\"",
-        "InstructorName": "\"dfd\"",
-        "NumberOfCredits": 33
-      }
-    ]
+    "SemestersAttended": null,
+    "Courses": null
   }
 ]

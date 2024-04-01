@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Assignment_Dot_Net\\StudentManagementSystem\\StudentManagementSystem.csproj": {}
+    "/home/mehrab/c#/StudentManagement/StudentManagementSystem/StudentManagementSystem.csproj": {}
   },
   "projects": {
-    "D:\\Assignment_Dot_Net\\StudentManagementSystem\\StudentManagementSystem.csproj": {
+    "/home/mehrab/c#/StudentManagement/StudentManagementSystem/StudentManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Assignment_Dot_Net\\StudentManagementSystem\\StudentManagementSystem.csproj",
+        "projectUniqueName": "/home/mehrab/c#/StudentManagement/StudentManagementSystem/StudentManagementSystem.csproj",
         "projectName": "StudentManagementSystem",
-        "projectPath": "D:\\Assignment_Dot_Net\\StudentManagementSystem\\StudentManagementSystem.csproj",
-        "packagesPath": "C:\\Users\\MEHRAB\\.nuget\\packages\\",
-        "outputPath": "D:\\Assignment_Dot_Net\\StudentManagementSystem\\obj\\",
+        "projectPath": "/home/mehrab/c#/StudentManagement/StudentManagementSystem/StudentManagementSystem.csproj",
+        "packagesPath": "/home/mehrab/.nuget/packages/",
+        "outputPath": "/home/mehrab/c#/StudentManagement/StudentManagementSystem/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\MEHRAB\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/mehrab/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -66,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
