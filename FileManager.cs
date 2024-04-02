@@ -3,10 +3,18 @@ using Newtonsoft.Json;
 public static class FileManager{
 
 private static string StudentsFilePath="students.json";
-public static void SaveStudents(List<Student> students){
-    var json=JsonConvert.SerializeObject(students,Formatting.Indented);
-    File.WriteAllText(StudentsFilePath,json);
+public static void SaveStudents(List<Student> students)
+{
+    // Serialize the list of students to JSON
+    string json = JsonConvert.SerializeObject(students, Formatting.Indented);
+
+    // Write the JSON to a file
+    File.WriteAllText("students.json", json);
 }
+
+
+
+
 
 public static List<Student> LoadStudents(){
     if(File.Exists(StudentsFilePath)){

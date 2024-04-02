@@ -1,26 +1,21 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using Newtonsoft.Json;
-using StudentManagementSystem.Interface;
+using System.Linq;
+
 using StudentManagementSystem.ExtensionMethod;
-using StudentManagementSystem.Interface;
+
 namespace StudentManagementSystem 
 {
-    public class Program
+     public  class Program
     {
-        private static List<Student> students;
+         private static List<Student> students;
+    private static ICourseManager courseManager;
 
         static void Main(string[] args)
         {
-            students = FileManager.LoadStudents();
-            if (students == null)
-            {
-                students = new List<Student>();
-            }
+            students = FileManager.LoadStudents() ?? new List<Student>();
+        courseManager = new CourseManager(students);
             int choice;
             do
             {
@@ -36,27 +31,19 @@ namespace StudentManagementSystem
                 switch (choice)
                 {
                     case 1:
-                        // Create a new student object
                         var newStudent = new Student();
-                        // Call the extension method on the new student object
                         AddNewStudentExtension.AddNewStudent(newStudent);
-                        // Add the new student to the list
                         students.Add(newStudent);
                         break;
 
                     case 2:
-                   
-                       ViewStudentDetails();
+                        ViewStudentDetails();
                         break;
                     case 3:
                         DeleteStudent();
                         break;
                     case 4:
-
-
                         AddNewSemester();
-
-
                         break;
 
                     case 5:
@@ -70,55 +57,15 @@ namespace StudentManagementSystem
             } while (choice != 5);
         }
 
-
-        // private static void AddNewStudent()
-        // {
-        //     Console.WriteLine("Adding New Student");
-        //     var student = new Student();
-
-        //     Console.Write("Enter First Name: ");
-        //     student.FirstName = Console.ReadLine();
-
-        //     Console.Write("Enter Middle Name: ");
-        //     student.MiddleName = Console.ReadLine();
-
-        //     Console.Write("Enter Last Name: ");
-        //     student.LastName = Console.ReadLine();
-
-        //     Console.Write("Enter Student ID (XXX-XXX-XXX): ");
-        //     var TemStuId = student.StudentID = Console.ReadLine();
-
-        //     Console.Write("Enter Joining Batch: ");
-        //     student.JoiningBatch = Console.ReadLine();
-
-        //     Console.Write("Enter Department (ComputerScience/BBA/English): ");
-        //     student.Department = (Department)Enum.Parse(typeof(Department), Console.ReadLine());
-
-        //     Console.Write("Enter Degree (BSC/BBA/BA/MSC/MBA/MA): ");
-        //     student.Degree = (Degree)Enum.Parse(typeof(Degree), Console.ReadLine());
-
-        //     students.Add(student);
-        //     Console.WriteLine("Student added successfully.");
-
-        //     // Nested condition for adding new semester or returning to main menu
-
-        //     FileManager.SaveStudents(students);
-        // }
-
-
         private static void AddNewSemester()
         {
-            // Find the student by their ID
-            Console.WriteLine("Enter your Id:");
+            Console.WriteLine("Enter student ID:");
             var studentID = Console.ReadLine();
-            var student = students.Find(s => s.StudentID == studentID);
+            var student = students.FirstOrDefault(s => s.StudentID == studentID);
 
             if (student != null)
             {
                 Console.WriteLine($"Adding New Semester for Student: {studentID}");
-
-                // Create a new list to hold the updated semesters attended
-                List<Semester> newSemestersAttended = new List<Semester>();
 
                 Console.Write("Enter SemesterCode: ");
                 string semesterCode = Console.ReadLine();
@@ -126,23 +73,18 @@ namespace StudentManagementSystem
                 Console.Write("Enter Year: ");
                 string year = Console.ReadLine();
 
-                // Create a new Semester object with the entered data
                 var newSemester = new Semester
                 {
                     SemesterCode = semesterCode,
                     Year = year
                 };
 
-                // Add the new semester to the list of semesters attended
-                newSemestersAttended.Add(newSemester);
-
-                // Update the SemestersAttended property of the student with the new list
-                student.SemestersAttended = newSemestersAttended;
+                student.SemestersAttended ??= new List<Semester>();
+                student.SemestersAttended.Add(newSemester);
 
                 Console.WriteLine("Semester added successfully.");
 
-                // Add courses for the new semester
-                AddCoursesForSemester(studentID);
+                AddCoursesForExistingStudent();
             }
             else
             {
@@ -150,107 +92,82 @@ namespace StudentManagementSystem
             }
         }
 
+        private static void AddCoursesForExistingStudent()
+    {
+        Console.WriteLine("Enter student ID:");
+        var studentID = Console.ReadLine();
 
-        private static void AddCoursesForSemester(string studentID)
+        try
         {
-            // Find the student by their ID
-            var student = students.Find(s => s.StudentID == studentID);
-
-            if (student != null)
+            var availableCourses = courseManager.GetAvailableCourses(studentID);
+            Console.WriteLine("Available Courses:");
+            foreach (var course in availableCourses)
             {
-                Console.WriteLine($"Adding Courses for Student: {studentID}");
-
-                // Create a new list to hold the courses attended by the student for the new semester
-                // List<Course> newCoursesAttended = new List<Course>();
-
-                // Prompt the user to enter course details
-                Console.Write("Enter CodeID: ");
-                string codeID = Console.ReadLine();
-
-                Console.Write("Enter CourseName: ");
-                string courseName = Console.ReadLine();
-
-                Console.Write("Enter InstructorName: ");
-                string instructorName = Console.ReadLine();
-
-                Console.Write("Enter NumberOfCredits: ");
-                int numberOfCredits = int.Parse(Console.ReadLine());
-
-                // Create a new Course object with the entered data
-                var newCourse = new Course
-                {
-                    CourseID = codeID,
-                    CourseName = courseName,
-                    InstructorName = instructorName,
-                    NumberOfCredits = numberOfCredits
-                };
-
-
-                var existingCourses = new List<Course>();
-                //existingCourses.Add(newCourse);
-                // Add the new course to the existing list of courses attended for the student
-                existingCourses.Add(newCourse);
-
-                // Update the Courses property of the student with the updated list
-                student.Courses = existingCourses;
-                //FileManager.SaveStudents(students);
-
-
-                Console.WriteLine("Courses added successfully.");
+                Console.WriteLine(course);
             }
-            else
-            {
-                Console.WriteLine("Student not found.");
-            }
+
+            Console.Write("Enter Course ID to add: ");
+            var courseId = Console.ReadLine();
+
+            courseManager.AddCourse(studentID, courseId);
+            Console.WriteLine("Course added successfully.");
         }
-
-        private static void ViewStudentDetails()
+        catch (ArgumentException ex)
         {
-            Console.WriteLine("Viewing Student Details");
-            Console.Write("Enter Student ID: ");
-            string studentID = Console.ReadLine();
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+        }
+    }
 
-            var student = students.Find(s => s.StudentID == studentID);
-            if (student != null)
+      private static void ViewStudentDetails()
+{
+    Console.WriteLine("Viewing Student Details");
+    Console.Write("Enter Student ID: ");
+    string studentID = Console.ReadLine();
+
+    var student = students.FirstOrDefault(s => s.StudentID == studentID);
+    if (student != null)
+    {
+        Console.WriteLine($"Student ID: {student.StudentID}");
+        Console.WriteLine($"Name: {student.FirstName} {student.MiddleName} {student.LastName}");
+        Console.WriteLine($"Joining Batch: {student.JoiningBatch}");
+        Console.WriteLine($"Department: {student.Department}");
+        Console.WriteLine($"Degree: {student.Degree}");
+
+        if (student.SemestersAttended?.Any() == true)
+        {
+            Console.WriteLine("Semesters Attended:");
+            foreach (var semester in student.SemestersAttended)
             {
-                Console.WriteLine($"Student ID: {student.StudentID}");
-                Console.WriteLine($"Name: {student.FirstName} {student.MiddleName} {student.LastName}");
-                Console.WriteLine($"Joining Batch: {student.JoiningBatch}");
-                Console.WriteLine($"Department: {student.Department}");
-                Console.WriteLine($"Degree: {student.Degree}");
-
-                if (student.SemestersAttended?.Count > 0)
-                {
-                    Console.WriteLine("Semesters Attended:");
-                    foreach (var semester in student.SemestersAttended)
-                    {
-                        Console.WriteLine($"- {semester.SemesterCode} {semester.Year}");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("No Semesters are assigned.");
-                }
-
-                if (student.Courses?.Count > 0)
-                {
-                    Console.WriteLine("Courses:");
-                    foreach (var course in student.Courses)
-                    {
-                        Console.WriteLine($"- {course.CourseID} {course.CourseName} {course.InstructorName} {course.NumberOfCredits}");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("No Courses are assigned.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Student not found.");
+                Console.WriteLine($"Semester Code:- {semester.SemesterCode} Semester Year: {semester.Year}");
             }
         }
+        else
+        {
+            Console.WriteLine("No Semesters are assigned.");
+        }
 
+        if (student.Courses?.Any() == true)
+        {
+            Console.WriteLine("Courses:");
+            foreach (var course in student.Courses)
+            {
+                Console.WriteLine($"- CourseID: {course.CourseID}"); // Modify as needed to display other course details
+            }
+        }
+        else
+        {
+            Console.WriteLine("No Courses are assigned.");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Student not found.");
+    }
+}
 
         private static void DeleteStudent()
         {
@@ -258,19 +175,11 @@ namespace StudentManagementSystem
             Console.Write("Enter Student ID: ");
             string studentID = Console.ReadLine();
 
-            var student = students.Find(s => s.StudentID == studentID);
+            var student = students.FirstOrDefault(s => s.StudentID == studentID);
             if (student != null)
             {
-                // Remove the student from the list of students
                 students.Remove(student);
                 Console.WriteLine("Student deleted successfully.");
-
-                // Optionally, you can also remove related information such as courses and semesters
-                //student.Courses.Clear();
-                //student.SemestersAttended.Clear();
-                // Or if you want to remove the courses and semesters completely from memory, 
-                // you can use students.RemoveAll(s => s.StudentID == studentID);
-
                 FileManager.SaveStudents(students);
             }
             else
@@ -278,7 +187,5 @@ namespace StudentManagementSystem
                 Console.WriteLine("Student not found.");
             }
         }
-
-
     }
 }
